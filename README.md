@@ -118,7 +118,7 @@ $font-sizes: (
 ## 9. Regex - "https://regex101.com/" website for practicing your Regular Expression
 1. Reqular expressions start with '/' and end with '/'. For example this **/ninja/** will math this:
 -<p>
-<mark>ninja</mark>ninja
+<mark style="background-color: yellow">ninja</mark>ninja
 </p>
 
 2. Global match - is when we look for all elements with the same pattern we have defined. To make REGEX global we add letter **g** after **/** charachter. For example this **/ninja/g** will result in:
