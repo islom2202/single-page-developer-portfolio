@@ -1,0 +1,64 @@
+@use "../colors" as *;
+@use "../breakpoints" as *;
+// Mobile
+.experience{
+  ul{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    padding: 4rem 0 4rem 0;
+    margin-inline: 4vw;
+    margin-bottom: 8rem;
+    border-top: solid 1px $white;
+    border-bottom: solid 1px $white;
+    text-align: center;
+  }
+  position: relative;
+  overflow-x: hidden;
+  ul::after{
+    content: url(/assets/images/ringsRight.png);
+    position: absolute;
+    right: -10rem;
+    bottom: 2%;
+    object-fit: contain;
+  }
+}
+
+// Tablet
+@include responsive($tablet){
+      .experience{
+        ul{
+        grid-template-columns: 1fr 1fr;
+        text-align: start;
+        gap: 5.2rem 12.1rem ;
+        border-bottom: none;
+        padding: 5.2rem 0 7.2rem 7%;
+        li{
+          display: flex;
+          flex-direction: column;
+          gap: 1.4rem;
+        }
+        }
+        ul::after{
+          right: -10rem;
+          bottom: 10rem;
+        }
+      }
+};
+
+// Desktop
+@include responsive($desktop){
+      .experience{
+        ul{
+          grid-template-columns: repeat(3, 1fr);
+          gap: 5.8rem 3.5rem;
+          margin-inline: 10%;
+          margin-right: 14%;
+          padding: 7.2rem 0 10.8rem 0;
+        }
+        ul::after{
+          bottom: 14rem;
+          right: 0;
+        }
+      }
+}

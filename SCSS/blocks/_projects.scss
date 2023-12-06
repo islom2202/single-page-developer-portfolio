@@ -1,0 +1,128 @@
+@use "../colors" as *;
+@use "../breakpoints" as *;
+// extend hero to call afterElement function
+@use "./hero" as *;
+
+// mobile
+.projects{
+  padding-inline: 4vw;
+  .title_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     button{
+      position: relative;
+      letter-spacing: 2.3px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover{
+        color: $light-green;
+      }
+      &::after{
+        @include afterElement();
+        height: 2px;
+        bottom: -1rem;
+    }
+    }
+  }
+  .items{
+    padding: 6rem 0;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    gap: 5.2rem;
+    .img_wrapper{
+      aspect-ratio: 345 / 253;
+      img{
+        width: 100%;
+      }
+    }
+    h4{
+      padding: 2rem 0 0.7rem 0;
+    }
+    p{
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      color: $light-gray;
+    }
+    .links{
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+      margin-top: 2rem;
+      button{
+      position: relative;
+      letter-spacing: 2.3px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover{
+        color: $light-green;
+      }
+      &::after{
+        @include afterElement();
+        height: 3px;
+        bottom: -1rem;
+    }
+      }
+    }
+  }
+}
+
+// tablet 
+@include responsive($tablet){
+  .projects{
+    padding-inline: 7%;
+    .items{
+    padding: 6rem 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7.2rem 3.2rem; 
+  }
+  }
+}
+
+// desktop 
+@include responsive($desktop){
+  .projects{
+    padding-inline: 10%;
+    .items{
+    padding: 8rem 0;
+     li{
+      position: relative;
+      .img_wrapper{
+        overflow: hidden;
+        aspect-ratio: 540 / 400;
+        img{
+          aspect-ratio: 540 / 400;
+          transition: 0.3s;
+        }
+    }
+    .links{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6rem;
+      margin: 0;
+      aspect-ratio: 540 / 400;
+      transition: 0.3s ease;
+    }
+     }
+     li:hover{
+      .img_wrapper{
+        img{
+          transform: scale(1.03);
+        }
+      }
+      .links{
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 1;
+      }
+     }
+  }
+  }
+}

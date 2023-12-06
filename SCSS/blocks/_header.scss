@@ -1,0 +1,51 @@
+@use "../breakpoints" as breakpoints;
+@use "../colors" as *;
+
+// Mobile
+header{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 5%;
+  ul{
+    display: flex;
+    gap: 2rem;
+    li{
+      svg{
+        fill: white;
+        width: clamp(25px, 1.5vw, 30px);
+        height: clamp(25px, 1.5vw, 30px);
+        transition: 0.3s;
+      }
+      &:hover svg{
+        fill: $light-green;
+      }
+  }
+    
+}
+}
+
+// Tablet
+@include breakpoints.responsive(breakpoints.$tablet){
+    header{
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  };
+
+// Desktop
+@include breakpoints.responsive(breakpoints.$desktop){
+    header{
+      padding: 3.9rem 0 3.9rem 0;
+      margin-inline: 12%;
+      margin-right: 14%;
+      nav{
+        position: relative;
+        z-index: 1;
+        ul{
+        padding-right: 2.9rem;
+      }
+      }
+    }
+  }

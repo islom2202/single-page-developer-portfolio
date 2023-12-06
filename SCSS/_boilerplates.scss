@@ -1,0 +1,99 @@
+@use "./colors" as *;
+@use "./breakpoints" as breakpoints;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+// Universal config
+html{
+  scroll-behavior: smooth;
+}
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 62.5%;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+// Font-sizes for mobile
+$font-sizes: (
+  h1: clamp(2.4rem, 10vw, 3.2rem),
+  h2: clamp(4rem, 6.5vw, 8.8rem),
+  h3: clamp(3.2rem, 4vw, 4.8rem),
+  h4: 2.4rem,
+  p: clamp(1.6rem, 1.5vw, 1.8rem),
+  a:clamp(1.6rem, 1.5vw, 1.8rem),
+  small:1.2rem,
+  input: 1.6rem,
+  textarea: 1.6rem,
+  li: clamp(2.4rem, 3vw, 3.2rem),
+  span: inherit,
+  button: 1.6rem,
+);
+@each $tag, $size in $font-sizes{
+  #{$tag}{
+    font-size: $size;
+  }
+};
+
+// Font-sizes for tablets
+@include breakpoints.responsive(breakpoints.$tablet){
+  $font-sizes: (
+  h1: 3.2rem,
+  h2: clamp(7.2rem, 6.5vw, 8.8rem),
+  h3: clamp(3.2rem, 4vw, 4.8rem),
+  p: 1.8rem
+);
+@each $tag, $size in $font-sizes{
+  #{$tag}{
+    font-size: $size;
+  }
+}
+
+};
+// Line-heights
+$line-heights: (
+  h2: 100%,
+  h3: 116.6%,
+  h4: 130%,
+  p:  2.6rem,
+  a: 162%
+);
+@each $tag, $height in $line-heights{
+  #{$tag}{
+    line-height: $height;
+  }
+}
+h2{
+  font-weight: 700;
+  letter-spacing: -2.05px;
+}
+h4{
+  font-weight: 700;
+}
+p{
+  line-height: 2.8rem;
+  color: $light-gray;
+}
+a{
+  font-weight: 700;
+  color: inherit;
+}
+.visually-hidden{
+  display: none;
+}
+body{
+  max-width: 1700px;
+  min-width: 350px;
+  margin-inline: auto;
+  background-color: $black;
+  color: $white;
+  position: relative;
+  button{
+   color: $white; 
+  }
+}
