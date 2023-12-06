@@ -9,17 +9,17 @@ li{
   // which return element with 100px width and 50 px height
 ~~~
 ## 2. Using '@use' like an object call:
-- as simple import
+1. as simple import
 ~~~
   @use "../colors"; 
 ~~~
--  as variable-object
+2.  as variable-object
 ~~~
   @use "../colors" as colors; 
   ...
   background-color: colors.$black-voile;
 ~~~
-- as default-object
+3. as default-object
 ~~~
  @use "../colors" as *; 
   ...
@@ -47,7 +47,7 @@ li{
   grid-area: c;
 }
 ```
-## 4. Grid-auto-row (using this we can give the same height to all of rows, even if the numberr of row is not defined):
+## 4. Grid-auto-row (using this we can give the same height to all of rows, even if the number of row is not defined):
 ~~~
 .grids{
   display: grid;
@@ -118,9 +118,29 @@ $font-sizes: (
 ## 9. Regex - "https://regex101.com/" website for practicing your Regular Expression
 1. Reqular expressions start with '/' and end with '/'. For example this **/ninja/** will math this:
 -<p>
-<mark>ninja</mark>dfdf
+<mark>ninja</mark>ninja
 </p>
 
+2. Global match - is when we look for all elements with the same pattern we have defined. To make REGEX global we add letter **g** after **/** charachter. For example this **/ninja/g** will result in:
+-<p>
+<mark>ninja</mark><mark>ninja</mark>
+</p> 
 
-2. Character Sets - we use them to match variety of different charachters within the same position
+3. REGEX by default is 
+- **sensitive** which means it will match only the exact charchter with exact letters (capital or small letter). For example this **/ninja/g** will result in:
+-<p>
+<mark>ninja</mark>Ninja
+</p> 
+
+- To make REGEX **insensitive** we add **i** after **/**. For example this **/ninja/i** will result in:
+-<p>
+<mark>Ninja</mark>ninja
+</p> 
+
+- To make REGEX **global-insensitive** we add **i** after **/**. For example this **/ninja/gi** will result in:
+-<p>
+<mark>Ninja</mark><mark>ninja</mark>
+</p> 
+
+4. Character Sets - we use them to match variety of different charachters within the same position
 
