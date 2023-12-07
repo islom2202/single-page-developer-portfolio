@@ -1,6 +1,7 @@
 # What I've learned from this project: 
 
-## 1. aspect-ratio - which helps us to define height respectively:
+## 1. aspect-ratio 
+ which helps us to define height respectively:
  ~~~ 
 li{
     min-height: 100px;
@@ -47,7 +48,8 @@ li{
   grid-area: c;
 }
 ```
-## 4. Grid-auto-row (using this we can give the same height to all of rows, even if the number of row is not defined):
+## 4. Grid-auto-row 
+(using this we can give the same height to all of rows, even if the number of row is not defined):
 ~~~
 .grids{
   display: grid;
@@ -115,19 +117,21 @@ $font-sizes: (
   <use xlink:href="#github"></use>
 </svg>
 ~~~
-## 9. Regex - "https://regex101.com/" website for practicing your Regular Expression
+## 9. Regex 
+ "https://regex101.com/" website for practicing your Regular Expression. To make it visibly appealing and understandable, please read md file in local VS-Code or some other platform.
 1. Reqular expressions start with '/' and end with '/'. For example this **/ninja/** will math this:
 -<p>
-<span style="background-color: yellow">ninja</span>ninja
+<mark>ninja</mark>ninja
 </p>
 
-2. Global match - is when we look for all elements with the same pattern we have defined. To make REGEX global we add letter **g** after **/** charachter. For example this **/ninja/g** will result in:
+#### 9.1. Global match 
+ is when we look for all elements with the same pattern we have defined. To make REGEX global we add letter **g** after **/** charachter. For example this **/ninja/g** will result in:
 -<p>
 <mark>ninja</mark><mark>ninja</mark>
 </p> 
 
-3. REGEX by default is 
-- **sensitive** which means it will match only the exact charchter with exact letters (capital or small letter). For example this **/ninja/g** will result in:
+#### 9.2. REGEX by default is 
+- case-**sensitive** which means it will match only the exact charchter with exact letters (capital or small letter). For example this **/ninja/g** will result in:
 -<p>
 <mark>ninja</mark>Ninja
 </p> 
@@ -139,8 +143,65 @@ $font-sizes: (
 
 - To make REGEX **global-insensitive** we add **i** after **/**. For example this **/ninja/gi** will result in:
 -<p>
-<mark>Ninja</mark><mark>ninja</mark>
+<mark>Ninja</mark><mark>ninja</mark><mark>niNJa</mark>
 </p> 
 
-4. Character Sets - we use them to match variety of different charachters within the same position
+#### 9.3. Character Sets 
+ we use them to match variety of different charachters within the same position. For example this **/[gj9]inja/g** will match all:
+-<p>
+<mark>ninja</mark> or <mark>jinja</mark> or <mark>9inja</mark>
+</p>
 
+#### 9.4. Ranges 
+ instead of including all charachters inside square brackets in **Character Sets**, we can use Ranges to range from something to something:
+ - This ``/[a-z]inja/gi`` will result in: 
+   - <mark>ninja</mark>
+     <mark>jinja</mark> 9inja 
+     <mark>Ninja</mark>
+- This ``/[a-z]inja/g`` will result in: 
+   - <mark>ninja</mark>
+     <mark>jinja</mark> 9inja Ninja
+- This ``/[a-zA-Z]inja/g`` will result in: 
+   - <mark>ninja</mark>
+     <mark>jinja</mark> 9inja 
+     <mark>Ninja</mark>
+- This ``/[a-zA-Z0-9]inja/g`` will result in: 
+   - <mark>ninja</mark>
+     <mark>jinja</mark> 
+     <mark>9inja</mark>
+     <mark>Ninja</mark>
+- This ``/[a-zA-Z0-9]inja/g`` will result in: 
+   - <mark>ninja</mark>
+     <mark>jinja</mark> 
+     <mark>9inja</mark>
+     <mark>Ninja</mark> sas343
+
+#### 9.5. Repeating characters
+- Notice ``[0-9]`` matches each digits individually, only with plus ``[0-9]+`` matches all digits (charachters) all together.
+- These nine charachters ``/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/g`` will match only first nine charachters of the phone-number (**[0-9][0-9]...**):
+  - <mark>989155768</mark>999 
+
+- These  charachters ``/[0-9]+/g`` will match infinite amount of nummbers that user inputs (**+**):
+  - <mark>989155768999...</mark>
+
+
+- These  charachters ``/[0-9a-z]{9}/g`` will match specified amount of nummbers that user inputs (**
+{specified-number}**):
+  - <mark>989155768</mark>999
+  - <mark>asygcnbtp</mark>
+- These  charachters ``/[0-9]{5,9}/g`` will match from specified to spceified amount of nummbers that user inputs (
+{**from** specified-number, **to** specified-number}):
+  - <mark>989155768</mark>999
+  or
+  - <mark>98915</mark>
+- These  charachters ``/[0-9a-z]{5,}/g`` will match from specified to **infinite** amount of nummbers that user inputs ({from **specified-number**, to **infinite**}):
+  - <mark>989155768w2323asas</mark>
+
+#### 9.6. Meta characters
+are charachters combined with backslash that have special abilities:
+- **\d** (digits) is equal to **[0-9]**
+- **\w** (words) is equal to **[a-zA-Z0-9_]**
+- **\s** matches any whitespace (space, tab-space) character
+  - This ``/\d{3}\s\w{3}/g`` will result in:
+    - <mark>123 sds</mark> - one space
+    - 123  sds - two or more spaces
