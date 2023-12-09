@@ -118,7 +118,7 @@ $font-sizes: (
 </svg>
 ~~~
 ## 9. Regex 
- "https://regex101.com/" website for practicing your Regular Expression. To make it visibly appealing and understandable, please read md file in local VS-Code or some other platform.
+ "https://regex101.com/" website for testing nad practicing your Regular Expression. To make it visibly appealing and understandable, please read md file in local VS-Code or some other platform.
 1. Reqular expressions start with '/' and end with '/'. For example this **/ninja/** will math this:
 -<p>
 <mark>ninja</mark>ninja
@@ -201,7 +201,53 @@ $font-sizes: (
 are charachters combined with backslash that have special abilities:
 - **\d** (digits) is equal to **[0-9]**
 - **\w** (words) is equal to **[a-zA-Z0-9_]**
-- **\s** matches any whitespace (space, tab-space) character
+- **\s** matches any whitespace (space, tab-space) characters
+
   - This ``/\d{3}\s\w{3}/g`` will result in:
     - <mark>123 sds</mark> - one space
     - 123  sds - two or more spaces
+
+#### 9.7. Special characters
+Special characters would not usually be acting the way you have expcted because they serve different purposes:
+
+ **'+'** - The one or more quantifier <br>
+ **' \ '** - The escape character ``(we put it before the charchter we want to escape reading as a special charachter)``:
+  - This */\+[0-9]{9}/g* will result in:
+    - <mark>+992989155768</mark> <br>
+      <mark>+992989155768</mark>
+
+ **'[ ]'** - The charachter set ``(the result will match to whatever we put inside this charachter)``<br>
+ **'[^]'** - The negate symbol in a character set <br> 
+ **'?'** - The zero-or-one quantifier ``(makes a preceding char optional)`` <br>
+ **'.'** - Matches any character (except for a newline character i.e. it matches if the newline is there) :
+  - This */c.t/g* will match (with any single-charachter between **c** and **t**):
+    - <mark>cat</mark>
+      <mark>cot</mark>...
+  - The number of charachters between the two depends on number of dots. This */f..t/g* will match:
+    - <mark>fart</mark>
+      <mark>fort</mark>...
+
+ **'*'** - The zero-or-more quantifier ``(is like + but optional like ?)``.
+  - The first character here */a[a-z]*/g* is not optional but the last is:
+    - <mark>a</mark>
+      <mark>adfdfd</mark>... dsds
+  
+**'.+'** - Matches anything:
+  - <mark>dadad2323./?</mark>...
+
+#### 9.8. Starting & Ending patterns
+- If we do like this */[0-9]{4}/g* it will match each four amount of numbers: <br>
+ <mark>1234</mark> <mark>1234</mark> <br>
+ <mark>12341252</mark>
+- But what if we want specified amount to be the maximum  matching we do this **/^[0-9]{4}$/g** and it won't match repeating amount : <br>
+<mark>1234</mark> <br>
+12345381
+
+#### 9.9. Alternative characters
+- **" | "** - compared to JavaScript we should have one "|", which means or. For example this */[a|b]/g* will math 'a' or 'b': <br>
+  - <mark>ab</mark>
+  - <mark>a</mark> <mark>b<mark>
+
+ - **" (..|..) "** - for example if for this "/p|tyre/g" we type bellow, it will not match while it is compares not *p* and *t*, but ``p`` and ``tyre`` , Therefore we use paranthesis **'()'** to chose one of two characters : 
+   - pyre <mark>p</mark> <mark>tyre</mark> // "/p|tyre/g"
+   - <mark>pyre</mark> <mark>tyre</mark> // /(t|p)yre/g
