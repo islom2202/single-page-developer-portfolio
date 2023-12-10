@@ -1,5 +1,25 @@
 # What I've learned from this project: 
-
+1. aspcet-ratio
+2. '@use' in SCSS
+3. grid-templates-areas & grid-area
+4. grid-auto-row 
+5. grid-area (grid-area: 2 / 1 / 3 / 2;)
+6. Hover-effect that makes image bigger, without causing any overflow
+7. Each loop in SCSS
+8. Short way of svg writing in html.
+9. Regex: 
+    1. global match 
+    2. sensitive & insensitive
+    3. character sets
+    4. ranges 
+    5. repeating characters
+    6. meta characters
+    7. special characters
+    8. starting & snding patterns
+    9. alternative characters (or)
+    10. two ways of saving regular expressions in JavaScript
+    11. practical example of REGEX
+    <br><br><br><br><br>
 ## 1. aspect-ratio 
  which helps us to define height respectively:
  ~~~ 
@@ -239,7 +259,7 @@ Special characters would not usually be acting the way you have expcted because 
 - If we do like this */[0-9]{4}/g* it will match each four amount of numbers: <br>
  <mark>1234</mark> <mark>1234</mark> <br>
  <mark>12341252</mark>
-- But what if we want specified amount to be the maximum  matching we do this **/^[0-9]{4}$/g** and it won't match repeating amount : <br>
+- But what if we want specified amount to be the maximum  matching we do this **/^[0-9]{4}$/g** and it won't match repeating amount (the end and the start should be 4 numbers): <br>
 <mark>1234</mark> <br>
 12345381
 
@@ -251,3 +271,50 @@ Special characters would not usually be acting the way you have expcted because 
  - **" (..|..) "** - for example if for this "/p|tyre/g" we type bellow, it will not match while it is compares not *p* and *t*, but ``p`` and ``tyre`` , Therefore we use paranthesis **'()'** to chose one of two characters : 
    - pyre <mark>p</mark> <mark>tyre</mark> // "/p|tyre/g"
    - <mark>pyre</mark> <mark>tyre</mark> // /(t|p)yre/g
+
+#### 9.10. Two ways of saving regular expressions in JavaScript: 
+1. let reg = /[a-z]/gi;
+2. let reg = new RegExp(/[a-z]/, 'gi');
+
+#### 9.11. Practical example of REGEX:
+- entire form project-example:
+```
+// selectors
+const inputs = document.querySelectorAll("input");
+// patterns
+const patterns = {
+  telephone: /^/d{11}$/,
+  username: /^[a-z\d]{5,10}$/i,
+  password: /^[\w@-]{8,20}$/i,
+  slug: /^[a-z\d-]{8,20}$/,
+}
+// validation function
+const isValid = (field, pattern) => {
+field.value.test(pattern) ? field.classList.add('valid') : field.classList.remove('valid');
+}
+// inputs events
+inputs.forEach((input) => {
+  input.oninput = (e) => {
+    isvalid(e.target, patterns[input.getAttribute("name")]);
+  }
+})
+```
+1. Phone number (UK telephone number ``only 11 digits``) 2 ways: 
+   - /^[0-9]{11}$/
+   - /^/d{11}$/
+
+2. User-name (alphanumeric or just text between 5 - 20):
+   - /^[a-z\d]{5,10}$/i
+   - /^[a-z0-9]{5,10}$/i
+
+3. Password (must be alphanumeric and [@-and also _ is allowed] between 8 - 20 characters):
+    - /^[\w@-]{8,20}$/i
+    - /^[a-z\d@_-]{8,20}$/i
+
+4. Profile slug (must contain only lowercase letters, numbers, hyphens and be between 8-20 charachters)
+
+5. Email - name@domain.extension.again (theboss@theninja.co.uk):
+  1. name - any letters, numbers, dots and/or hyphens
+  2. domain - any letters, numbers and/or hyphens
+  3. extension - any letters
+  4. again - a dot then any letters

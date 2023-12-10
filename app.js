@@ -16,5 +16,4 @@ form.onsubmit = (e) => {
     e.target.message.previousElementSibling.style.display = "none"
   }
   console.log(e.target.name.nextElementSibling)
-  console.log(islom == );
 }
