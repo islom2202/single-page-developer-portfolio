@@ -19,37 +19,60 @@
     flex-direction: column;
     .input_wrapper{
       position: relative;
-      // &:has(.error_message) input,
-      // &:has(.error_message) textarea{
-      //   border-bottom: 1px solid $red;
-      // }
-      input, textarea{
+      display: flex;
+      flex-direction: column;   
+     input, textarea{  
       color: $light-gray;
       border-bottom: 1px solid $light-gray;
       width: 100%;
       padding: 3.2rem 0 1.6rem 2.4rem;
-
-    }
+     }
      input:focus, textarea:focus{
       border-bottom: 1px solid $light-green;
      }
       textarea{
         height: 104px;
-      }
-      .error_message{
+     }
+     .error_message{
         display: none;
         font-size: 1.2rem;
         position: absolute;
         bottom: -1.8rem;
         right: 0;
         color: $red;
-      }
-      .error_icon{
+        text-align: end;
+     }
+     .error_icon{
         display: none;
         position: absolute;
         right: 0;
         top: 50%;
+     }
+    .valid_message{
+      display: none;
+      align-self: flex-end;
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      color: $light-green;
+     }
+    // if invalid
+    &:has(.invalid){
+      .error_message, .error_icon{
+        display: block;
       }
+      .invalid{
+        border-bottom: 1px solid $red;
+      } 
+    }
+    // if valid
+    &:has(.valid){
+      .valid_message{
+        display: block;
+      }
+      .valid{
+        border-bottom: 1px solid $light-green;
+      }
+    }
     }
     button{
       align-self: self-end;

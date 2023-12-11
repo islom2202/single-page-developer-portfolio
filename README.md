@@ -252,7 +252,7 @@ Special characters would not usually be acting the way you have expcted because 
     - <mark>a</mark>
       <mark>adfdfd</mark>... dsds
   
-**'.+'** - Matches anything:
+**'.'** - Matches anything:
   - <mark>dadad2323./?</mark>...
 
 #### 9.8. Starting & Ending patterns
@@ -287,6 +287,7 @@ const patterns = {
   username: /^[a-z\d]{5,10}$/i,
   password: /^[\w@-]{8,20}$/i,
   slug: /^[a-z\d-]{8,20}$/,
+  email: /^[a-z\d\.-]+@[a-z\d-]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/
 }
 // validation function
 const isValid = (field, pattern) => {
@@ -311,10 +312,12 @@ inputs.forEach((input) => {
     - /^[\w@-]{8,20}$/i
     - /^[a-z\d@_-]{8,20}$/i
 
-4. Profile slug (must contain only lowercase letters, numbers, hyphens and be between 8-20 charachters)
+4. Profile slug (must contain only lowercase letters, numbers, hyphens and be between 8-20 charachters):
+    - /^[a-z\d-]{8,20}$/
 
-5. Email - name@domain.extension.again (theboss@theninja.co.uk):
-  1. name - any letters, numbers, dots and/or hyphens
-  2. domain - any letters, numbers and/or hyphens
-  3. extension - any letters
-  4. again - a dot then any letters
+5. Email - name@domain.extension.again (theboss@theninja.co.uk)(email must be a valid address, e.g. me@mydomain.com):
+      - /^[a-z\d\.-]+@[a-z\d-]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/
+      1. name - any letters, numbers, dots and/or hyphens in small charachters
+      2. domain - any letters, numbers and/or hyphens
+      3. extension - any letters
+      4. again - a dot then any letters
