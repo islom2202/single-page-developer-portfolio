@@ -19,6 +19,7 @@
     9. alternative characters (or)
     10. two ways of saving regular expressions in JavaScript
     11. practical example of REGEX
+10. Form sending to email html only
     <br><br><br><br><br>
 ## 1. aspect-ratio 
  which helps us to define height respectively:
@@ -321,3 +322,12 @@ inputs.forEach((input) => {
       2. domain - any letters, numbers and/or hyphens
       3. extension - any letters
       4. again - a dot then any letters
+
+## 10. Form sending to email html only
+~~~
+<form action="https://formsubmit.co/your@email.com" method="POST">
+     <input type="text" name="name" required>
+     <input type="email" name="email" required>
+     <button type="submit">Send</button>
+</form>
+~~~

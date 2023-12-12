@@ -7,22 +7,29 @@ const error_message = document.querySelectorAll(".error_message")
 const error_icon = document.querySelectorAll(".error_icon")
 // patterns
 const patterns = {
-  email: /^[a-z\d\.-]+@[a-z\d-]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/,
-  name: /^[a-z]{3,25}$/i,
+  email: /^[a-z\d\.-]+@[a-z\d-]+\.[a-z]{2,3}(\.[a-z]{2,3})?$/i,
+  name: /^[a-z]{3,25}( [a-z]{3,25})?$/i,
   message: /^.{1,150}$/i,
 }
 // submition form
 form.onsubmit = (e) => {
   e.preventDefault()
- !message.value
-   ? message.classList.add("invalid")
-   : message.classList.remove("invalid");
+  !message.value
+    ? message.classList.add("invalid")
+    : message.classList.remove("invalid")
   !email.value
     ? email.classList.add("invalid")
-    : email.classList.remove("invalid");
-  !name.value
-    ? name.classList.add("invalid")
-    : name.classList.remove("invalid")
+    : email.classList.remove("invalid")
+  !name.value ? name.classList.add("invalid") : name.classList.remove("invalid")
+
+  // empty each field and its status after submition
+  message.value =
+  name.value =
+  email.value =
+  message.className =
+  name.className =
+  email.className =
+  ""
 }
 // message 
 message.oninput = () => {

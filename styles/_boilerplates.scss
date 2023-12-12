@@ -94,6 +94,9 @@ body{
   color: $white;
   position: relative;
   button{
-   color: $white; 
+   color: $white;
+   &:active{
+    opacity: 50%;
+   }
   }
 }

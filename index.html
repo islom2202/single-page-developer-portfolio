@@ -181,24 +181,25 @@
         <h2>Contact</h2>
         <p>I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.</p>
       </div>
-      <form>
+      <form target="_blank" action="https://formsubmit.co/islomihsan@gmail.com" method="POST">
         <div class="input_wrapper">
           <span class="error_message">Please, fill out your name</span>
-          <input type="text" placeholder="NAME" name="name">
+          <input type="text" placeholder="NAME" name="name" required>
           <img src="./assets/icons/error.svg" alt="error" class="error_icon">
           <span class="valid_message">valid name</span>
         </div>
         <div class="input_wrapper">
           <span class="error_message">email must be a valid address, e.g. me@mydomain.com</span>
-          <input type="email" placeholder="EMAIL" name="email" >
+          <input type="email" placeholder="EMAIL" name="email" required>
           <span class="valid_message">valid email address</span>
           <img src="./assets/icons/error.svg" alt="error"  class="error_icon">
         </div>
         <div class="input_wrapper">
           <span class="error_message">Please, don't forget about your message</span>
-          <textarea placeholder="MESSAGE" name="message"></textarea>
+          <textarea placeholder="MESSAGE" name="message" required></textarea>
           <img src="./assets/icons/error.svg" alt="error" class="error_icon">
         </div>
+        <input type="hidden" name="_captcha" value="false">
         <button type="submit">SEND MESSAGE</button>
       </form>
     </section>
