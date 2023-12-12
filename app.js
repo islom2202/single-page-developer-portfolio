@@ -11,25 +11,27 @@ const patterns = {
   name: /^[a-z]{3,25}( [a-z]{3,25})?$/i,
   message: /^.{1,150}$/i,
 }
-// submition form
+// form submission
 form.onsubmit = (e) => {
   e.preventDefault()
-  !message.value
-    ? message.classList.add("invalid")
-    : message.classList.remove("invalid")
-  !email.value
-    ? email.classList.add("invalid")
-    : email.classList.remove("invalid")
-  !name.value ? name.classList.add("invalid") : name.classList.remove("invalid")
-
-  // empty each field and its status after submition
-  message.value =
-  name.value =
-  email.value =
-  message.className =
-  name.className =
-  email.className =
-  ""
+   !message.value
+     ? message.classList.add("invalid")
+     : message.classList.remove("invalid")
+   !email.value
+     ? email.classList.add("invalid")
+     : email.classList.remove("invalid")
+   !name.value
+     ? name.classList.add("invalid")
+     : name.classList.remove("invalid")
+    // submit form before emptying values
+     form.submit()
+    message.value =
+    name.value =
+    email.value =
+    message.className =
+    name.className =
+    email.className =
+    ""
 }
 // message 
 message.oninput = () => {
@@ -41,7 +43,6 @@ message.oninput = () => {
       message.classList.remove("valid"))
     : (message.classList.remove("invalid"), message.classList.add("valid"))
 }
-
 // email
 form.email.oninput = () => {
   !patterns["email"].test(email.value) 
