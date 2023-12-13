@@ -323,7 +323,7 @@ inputs.forEach((input) => {
       3. extension - any letters
       4. again - a dot then any letters
 
-## 10. Form sending to email html only
+## 10. Form sending to email html-only
 ~~~
 <form action="https://formsubmit.co/your@email.com" method="POST">
      <input type="text" name="name" required>
